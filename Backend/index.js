@@ -14,10 +14,6 @@ dotenv.config({});
 const app = express();
 app.use(express.urlencoded({extended: true}))
 app.use('/uploads', express.static('uploads'));
-app.use(express.static(path.join(__dirname, '../Frontend/dist'))) 
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../Frontend/dist/index.html')); 
-})
 app.get("/home", (req, res) => {
     return res.status(200).json({
         message: "Welcome to the home page!",

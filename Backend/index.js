@@ -25,7 +25,7 @@ app.get("/home", (req, res) => {
 
 
 const corsOptions = {
-    origin: "https://cheerful-crepe-0fa53f.netlify.app/",
+    origin: "https://spare-sphere.netlify.app",
     credentials: true,
 };
 

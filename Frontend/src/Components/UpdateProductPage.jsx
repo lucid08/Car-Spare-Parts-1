@@ -29,7 +29,7 @@ const UpdateProductPage = () => {
         }
 
         const response = await axios.get(
-          `https://spare-sphere-1.onrender.comapi/v1/product/${productId}`,
+          `https://spare-sphere-1.onrender.com/api/v1/product/${productId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -95,7 +95,7 @@ const UpdateProductPage = () => {
       }
 
       const response = await axios.put(
-        `https://spare-sphere-1.onrender.comapi/v1/product/update-product/${productId}`,
+        `https://spare-sphere-1.onrender.com/api/v1/product/update-product/${productId}`,
         data,
         {
           headers: {

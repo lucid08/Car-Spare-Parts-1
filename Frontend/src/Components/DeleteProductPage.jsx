@@ -23,7 +23,7 @@ const DeleteProductPage = () => {
 
     try {
       const response = await axios.delete(
-        `https://spare-sphere-1.onrender.comapi/v1/product/delete-product/${productId}`, // Replace with your API URL
+        `https://spare-sphere-1.onrender.com/api/v1/product/delete-product/${productId}`, // Replace with your API URL
         {
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header

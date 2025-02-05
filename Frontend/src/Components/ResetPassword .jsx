@@ -23,7 +23,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        `https://spare-sphere-1.onrender.comapi/v1/user/reset-password/${token}`,
+        `https://spare-sphere-1.onrender.com/api/v1/user/reset-password/${token}`,
         {
           password,
         }

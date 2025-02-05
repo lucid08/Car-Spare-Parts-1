@@ -29,7 +29,7 @@ const Signup = () => {
     formData.append("phoneNumber", input.phoneNumber);
     try {
       const res = await axios.post(
-        `https://spare-sphere-1.onrender.comapi/v1/user/register`,
+        `https://spare-sphere-1.onrender.com/api/v1/user/register`,
         formData,
         {
           headers: {

@@ -25,7 +25,7 @@ app.get("/home", (req, res) => {
 
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://cheerful-crepe-0fa53f.netlify.app/",
     credentials: true,
 };
 

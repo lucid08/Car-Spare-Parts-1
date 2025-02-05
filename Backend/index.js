@@ -6,13 +6,8 @@ import productRoute from './routes/product.route.js';
 import cartRoute from './routes/cart.route.js';
 import connectDB from './config/db.js';
 import Razorpay from 'razorpay';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { getkey, paymentProcess, paymentVerification } from './controllers/user.controller.js';
 // import { urlencoded } from 'body-parser';
-
-const __filename=fileURLToPath(import.meta.url)
-const __dirname=path.dirname(__filename)
 
 dotenv.config({});
 

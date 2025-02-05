@@ -51,7 +51,7 @@ const CreateProductPage = () => {
       }
   
       const response = await axios.post(
-        "http://localhost:8000/api/v1/product/create",
+        "https://spare-sphere-1.onrender.com.onrender.comapi/v1/product/create",
         data,
         {
           headers: {

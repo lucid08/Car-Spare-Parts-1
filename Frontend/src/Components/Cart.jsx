@@ -13,7 +13,7 @@
 //       const id = productId._id === undefined ? productId : productId._id;
 
 //       const response = await axios.patch(
-//         "http://localhost:8000/api/v1/cart/decrement-item",
+//         "https://spare-sphere-1.onrender.comapi/v1/cart/decrement-item",
 //         { productId: id },
 //         {
 //           headers: {
@@ -34,7 +34,7 @@
 //       try {
 //         const token = localStorage.getItem("token");
 //         const response = await axios.get(
-//           "http://localhost:8000/api/v1/cart/get-cart",
+//           "https://spare-sphere-1.onrender.com.onrender.comapi/v1/cart/get-cart",
 //           {
 //             headers: {
 //               Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@
 //       const token = localStorage.getItem("token");
 
 //       const response = await axios.post(
-//         "http://localhost:8000/api/v1/cart/checkout",
+//         "https://spare-sphere-1.onrender.comapi/v1/cart/checkout",
 //         { shippingAddress },
 //         {
 //           headers: {
@@ -183,7 +183,7 @@ const Cart = () => {
       const id = productId._id === undefined ? productId : productId._id;
 
       const response = await axios.patch(
-        "http://localhost:8000/api/v1/cart/decrement-item",
+        "https://spare-sphere-1.onrender.comapi/v1/cart/decrement-item",
         { productId: id },
         {
           headers: {
@@ -204,7 +204,7 @@ const Cart = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:8000/api/v1/cart/get-cart",
+          "https://spare-sphere-1.onrender.comapi/v1/cart/get-cart",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -229,7 +229,7 @@ const Cart = () => {
       // const token = localStorage.getItem("token");
 
       // const response = await axios.post(
-      //   "http://localhost:8000/api/v1/cart/checkout",
+      //   "https://spare-sphere-1.onrender.comapi/v1/cart/checkout",
       //   { shippingAddress },
       //   {
       //     headers: {
@@ -248,8 +248,8 @@ const Cart = () => {
       // }
       try {
         // console.log("hiii");
-        const {data:keyData}  = await axios.get('http://localhost:8000/getkey')
-        const {data:orderData} = await axios.post('http://localhost:8000/payment/process', {
+        const {data:keyData}  = await axios.get('https://spare-sphere-1.onrender.comgetkey')
+        const {data:orderData} = await axios.post('https://spare-sphere-1.onrender.compayment/process', {
           totalPrice
         });
         const {key} = keyData;
@@ -264,7 +264,7 @@ const Cart = () => {
           name: 'Sami Boy',
           description: 'Test Transaction',
           order_id: order.id, // This is the order_id created in the backend
-          callback_url: 'http://localhost:8000/paymentSuccess', // Your success URL
+          callback_url: 'https://spare-sphere-1.onrender.compaymentSuccess', // Your success URL
           prefill: {
             name: 'Gaurav Kumar',
             email: 'gaurav.kumar@example.com',

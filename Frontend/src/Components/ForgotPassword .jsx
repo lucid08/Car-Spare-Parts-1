@@ -16,7 +16,7 @@ const ForgotPassword = () => {
     try {
       setWait("Please Wait...");
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/forgot-password",
+        "https://spare-sphere-1.onrender.comapi/v1/user/forgot-password",
         { email }
       );
       setMessage(response.data.message);

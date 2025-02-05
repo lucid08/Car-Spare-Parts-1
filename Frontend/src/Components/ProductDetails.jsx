@@ -15,7 +15,7 @@
 //       try {
 //         setLoading(true);
 //         const response = await axios.get(
-//           `http://localhost:8000/api/v1/product/${id}`
+//           `https://spare-sphere-1.onrender.com.onrender.comapi/v1/product/${id}`
 //         );
 //         setProduct(response.data.product);
 //       } catch (err) {
@@ -42,7 +42,7 @@
 //       }
 
 //       const response = await axios.post(
-//         "http://localhost:8000/api/v1/cart/add",
+//         "https://spare-sphere-1.onrender.com.onrender.com.onrender.comapi/v1/cart/add",
 //         {
 //           productId: product._id,
 //           quantity,
@@ -180,7 +180,7 @@ const ProductDetails = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://localhost:8000/api/v1/product/${id}`
+          `https://spare-sphere-1.onrender.com.onrender.comapi/v1/product/${id}`
         );
         setProduct(response.data.product);
       } catch (err) {
@@ -207,7 +207,7 @@ const ProductDetails = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:8000/api/v1/cart/add",
+        "https://spare-sphere-1.onrender.comapi/v1/cart/add",
         {
           productId: product._id,
           quantity,

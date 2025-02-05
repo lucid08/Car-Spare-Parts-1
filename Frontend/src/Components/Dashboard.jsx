@@ -15,7 +15,7 @@ const DashBoard = () => {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:8000/api/v1/product/user/products",
+        "https://spare-sphere-1.onrender.com.onrender.comapi/v1/product/user/products",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

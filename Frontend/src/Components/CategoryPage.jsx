@@ -11,7 +11,7 @@ const CategoryPage = () => {
     const fetchCategoryProducts = async () => {
       try {
         const response = await axios.post(
-          `http://localhost:8000/api/v1/product/${category}`
+          `https://spare-sphere-1.onrender.com.onrender.comapi/v1/product/${category}`
         );
         setProducts(response.data);
       } catch (error) {

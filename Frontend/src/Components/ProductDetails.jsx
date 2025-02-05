@@ -180,7 +180,7 @@ const ProductDetails = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `https://spare-sphere-1.onrender.com/.onrender.comapi/v1/product/${id}`
+          `https://spare-sphere-1.onrender.com/api/v1/product/${id}`
         );
         setProduct(response.data.product);
       } catch (err) {

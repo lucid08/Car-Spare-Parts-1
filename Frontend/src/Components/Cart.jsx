@@ -183,7 +183,7 @@ const Cart = () => {
       const id = productId._id === undefined ? productId : productId._id;
 
       const response = await axios.patch(
-        "https://spare-sphere-1.onrender.com////api/v1/cart/decrement-item",
+        "https://spare-sphere-1.onrender.com/api/v1/cart/decrement-item",
         { productId: id },
         {
           headers: {
@@ -204,7 +204,7 @@ const Cart = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://spare-sphere-1.onrender.com//api/v1/cart/get-cart",
+          "https://spare-sphere-1.onrender.com/api/v1/cart/get-cart",
           {
             headers: {
               Authorization: `Bearer ${token}`,

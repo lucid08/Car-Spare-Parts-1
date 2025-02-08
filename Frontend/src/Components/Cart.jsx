@@ -226,26 +226,6 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     try {
-      // const token = localStorage.getItem("token");
-
-      // const response = await axios.post(
-      //   "https://spare-sphere-1.onrender.com//api/v1/cart/checkout",
-      //   { shippingAddress },
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //   }
-      // );
-
-      // if (response.status === 200) {
-      //   alert("Order placed successfully!");
-      //   setCartItems([]);
-      //   setTotalPrice(0);
-      //   setIsModalOpen(false); // Close the modal after checkout
-      // } else {
-      //   alert("Failed to place order. Please try again.");
-      // }
       try {
         // console.log("hiii");
         const {data:keyData}  = await axios.get('https://spare-sphere-1.onrender.com/getkey')
@@ -274,9 +254,29 @@ const Cart = () => {
             color: '#F37254'
           },
         };
-  
+        
         const rzp = new Razorpay(options);
         rzp.open();
+        const token = localStorage.getItem("token");
+  
+        const response = await axios.post(
+          "https://spare-sphere-1.onrender.com//api/v1/cart/checkout",
+          { shippingAddress },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+  
+        if (response.status === 200) {
+          alert("Order placed successfully!");
+          setCartItems([]);
+          setTotalPrice(0);
+          setIsModalOpen(false); // Close the modal after checkout
+        } else {
+          alert("Failed to place order. Please try again.");
+        }
       } catch (error) {
         console.log(error);
         

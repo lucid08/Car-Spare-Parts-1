@@ -133,7 +133,6 @@
 
 // export default Home;
 
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
@@ -143,8 +142,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Import images
 import heroImage1 from "./images/home1.jpg";
-import heroImage2 from "./images/home2.jpg";
-import heroImage3 from "./images/home3.jpg";
+import heroImage2 from "./images/home4.jpg";
+import heroImage3 from "./images/home5.jpg";
 import reliabilityImage from "./images/home2.jpg";
 import affordabilityImage from "./images/home3.jpg";
 import qualityImage from "./images/home4.png";
@@ -153,8 +152,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
-    const isLoggedIn = localStorage.getItem("token") !== null;
-    if (!isLoggedIn) {
+    if (!localStorage.getItem("token")) {
       navigate("/login");
     }
   };
@@ -176,36 +174,23 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
-      {/* Hero Section with Sliding Animation */}
+    <div className="bg-gray-300 text-white min-h-screen">
+      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <Slider {...settings}>
-          <div>
-            <img
-              src={heroImage1}
-              alt="Hero 1"
-              className="w-full h-[600px] object-cover brightness-75"
-            />
-          </div>
-          <div>
-            <img
-              src={heroImage2}
-              alt="Hero 2"
-              className="w-full h-[600px] object-cover brightness-75"
-            />
-          </div>
-          <div>
-            <img
-              src={heroImage3}
-              alt="Hero 3"
-              className="w-full h-[600px] object-cover brightness-75"
-            />
-          </div>
+          {[heroImage1, heroImage2, heroImage3].map((img, index) => (
+            <div key={index}>
+              <img
+                src={img}
+                alt={`Hero ${index + 1}`}
+                className="w-full h-[400px] md:h-[600px] object-cover brightness-75"
+              />
+            </div>
+          ))}
         </Slider>
-
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center text-white">
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center px-4">
           <motion.h1
-            className="text-6xl font-extrabold mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -213,7 +198,7 @@ const Home = () => {
             Your Trusted Partner for Car Spare Parts
           </motion.h1>
           <motion.p
-            className="text-xl mb-6"
+            className="text-lg sm:text-xl mb-6"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -222,7 +207,7 @@ const Home = () => {
           </motion.p>
           <motion.button
             onClick={handleGetStartedClick}
-            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg transition duration-300"
             whileHover={{ scale: 1.1 }}
           >
             Get Started
@@ -231,75 +216,40 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-12 px-6 bg-gray-800">
-        <h2 className="text-4xl font-bold text-center text-orange-500 mb-8">
+      <section className="py-12 px-6">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-orange-500 mb-8">
           Why Partner with Us?
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Reliability */}
-          <motion.div
-            className="relative group rounded-lg shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-          >
-            <img
-              src={reliabilityImage}
-              alt="Reliability"
-              className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="text-center">
-                <h3 className="text-2xl font-semibold mb-2">Unmatched Reliability</h3>
-                <p className="text-lg">Count on us to deliver high-quality spare parts that last.</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Affordability */}
-          <motion.div
-            className="relative group rounded-lg shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-          >
-            <img
-              src={affordabilityImage}
-              alt="Affordability"
-              className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="text-center">
-                <h3 className="text-2xl font-semibold mb-2">Affordable Prices</h3>
-                <p className="text-lg">
-                  Premium parts at competitive prices, perfect for every budget.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Quality */}
-          <motion.div
-            className="relative group rounded-lg shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-          >
-            <img
-              src={qualityImage}
-              alt="Quality"
-              className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="text-center">
-                <h3 className="text-2xl font-semibold mb-2">Top-Notch Quality</h3>
-                <p className="text-lg">
-                  We guarantee parts that enhance your vehicle's safety and performance.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {[{ img: reliabilityImage, title: "Unmatched Reliability", text: "Count on us to deliver high-quality spare parts that last." },
+            { img: affordabilityImage, title: "Affordable Prices", text: "Premium parts at competitive prices, perfect for every budget." },
+            { img: qualityImage, title: "Top-Notch Quality", text: "We guarantee parts that enhance your vehicle's safety and performance." }]
+            .map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative group rounded-lg shadow-lg overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-[300px] md:h-[400px] object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="text-center">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-sm sm:text-lg">{item.text}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
         </div>
       </section>
 
       {/* Call to Action Section */}
-      <section className="bg-orange-600 py-8 text-center">
+      <section className="bg-orange-600 py-8 text-center px-4">
         <motion.h2
-          className="text-4xl font-extrabold text-white mb-6"
+          className="text-3xl sm:text-4xl font-extrabold text-white mb-4"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -307,7 +257,7 @@ const Home = () => {
           Ready to Upgrade Your Ride?
         </motion.h2>
         <motion.p
-          className="text-lg text-white mb-2"
+          className="text-sm sm:text-lg text-white mb-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -316,7 +266,7 @@ const Home = () => {
         </motion.p>
         <motion.button
           onClick={handleExploreClick}
-          className="bg-white text-orange-600 font-bold py-3 px-6 rounded-lg transition duration-300 hover:bg-gray-100"
+          className="bg-white text-orange-600 font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg transition duration-300 hover:bg-gray-100"
           whileHover={{ scale: 1.1 }}
         >
           Explore Our Products
@@ -327,3 +277,4 @@ const Home = () => {
 };
 
 export default Home;
+

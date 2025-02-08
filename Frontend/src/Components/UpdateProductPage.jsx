@@ -124,16 +124,16 @@ const UpdateProductPage = () => {
 
   return (
     <motion.div
-      className="flex justify-center items-center bg-gray-900 p-6 space-x-8"
+      className="flex flex-col sm:flex-row justify-center items-center bg-gray-300 p-6 pt-24 space-x-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       {/* Left side - Image Preview */}
-      <div className="w-1/3 flex justify-center">
+      <div className="w-full sm:w-1/2 flex justify-center mb-6 sm:mb-0">
         {currentImage && (
           <motion.div
-            className="w-76 h-96 rounded-lg overflow-hidden shadow-lg"
+            className="w-72 h-96 rounded-lg overflow-hidden shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -149,7 +149,7 @@ const UpdateProductPage = () => {
       {/* Right side - Update Form */}
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-700 p-6 w-1/2 rounded-xl shadow-lg space-y-6"
+        className="bg-gray-700 p-6 w-full sm:w-2/3 md:w-2/3 lg:w-1/2 rounded-xl shadow-lg space-y-6"
       >
         <h1 className="text-2xl font-semibold text-center text-white">
           Update Product
@@ -250,7 +250,7 @@ const UpdateProductPage = () => {
             />
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center space-x-4">
             <motion.button
               type="submit"
               className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-all duration-300"
@@ -258,6 +258,17 @@ const UpdateProductPage = () => {
               whileTap={{ scale: 0.95 }}
             >
               Update Product
+            </motion.button>
+
+            {/* Go Back Button */}
+            <motion.button
+              type="button"
+              onClick={() => navigate("/dashboard")}
+              className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Go Back
             </motion.button>
           </div>
         </div>

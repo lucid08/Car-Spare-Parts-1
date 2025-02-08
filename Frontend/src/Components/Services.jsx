@@ -107,10 +107,10 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="p-12 min-h-screen flex flex-col items-center bg-gradient-to-b from-gray-900 to-black text-white">
+    <div className="p-6 sm:p-12 min-h-screen flex flex-col items-center bg-gray-300 text-gray-900">
       {/* Header Section with Animation */}
       <motion.h1
-        className="text-5xl font-extrabold text-orange-500 mb-10 text-center"
+        className="text-4xl sm:text-5xl font-extrabold text-orange-500 mb-6 sm:mb-10 text-center"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -119,11 +119,11 @@ const Services = () => {
       </motion.h1>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 w-full max-w-6xl">
         {services.map((service, index) => (
           <motion.div
             key={index}
-            className="relative flex flex-col items-center text-center bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-8 shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
+            className="relative flex flex-col items-center text-center bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -133,10 +133,10 @@ const Services = () => {
             <div className="mb-4">{service.icon}</div>
 
             {/* Title */}
-            <h2 className="text-2xl font-semibold text-orange-500 mb-2">{service.title}</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-orange-500 mb-2">{service.title}</h2>
 
             {/* Description */}
-            <p className="text-gray-300">{service.description}</p>
+            <p className="text-gray-900 text-sm sm:text-base">{service.description}</p>
 
             {/* Background Glow Effect */}
             <div className="absolute inset-0 bg-orange-500 opacity-0 hover:opacity-10 transition duration-300 rounded-xl"></div>

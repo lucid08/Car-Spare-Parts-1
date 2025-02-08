@@ -25,7 +25,7 @@ const DashBoard = () => {
 
       setUserItems(response.data.products);
     } catch (err) {
-      setError("Failed to fetch products. Please try again later.");
+      setError("Failed to fetch products.");
     } finally {
       setLoading(false);
     }
@@ -57,10 +57,10 @@ const DashBoard = () => {
   };
 
   return (
-    <div className="dashboard bg-gray-900 p-6 rounded-lg shadow-xl space-y-6 min-h-screen relative">
+    <div className="dashboard bg-gray-300 p-6 rounded-lg shadow-xl space-y-6 min-h-screen relative">
       <div className="flex justify-between items-center mb-6">
         <motion.h1
-          className="text-3xl font-semibold text-white"
+          className="text-3xl text-centre font-semibold text-gray-900"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -115,9 +115,9 @@ const DashBoard = () => {
                     )}
                   </div>
                   <h3 className="text-xl font-semibold text-white">Name : {item.title}</h3>
-                  <p className="text-sm text-gray-400 mt-2">Description : {item.description}</p>
+                  <p className="text-sm text-white mt-2">Description : {item.description}</p>
                   <p className="text-md font-medium text-gray-100 mt-2">
-                    Price: <span className="text-green-600">${item.price}</span>
+                    Price: <span className="text-green-600">Rs.{item.price}</span>
                   </p>
 
                   <div className="mt-4 flex space-x-4">
@@ -127,12 +127,12 @@ const DashBoard = () => {
                     >
                       Update
                     </NavLink>
-                    <button
-                      onClick={() => handleDeleteProduct(item._id)}
-                      className="bg-red-600 text-white px-4 py-2 rounded-md font-medium hover:bg-red-700 transition duration-300"
+                    <NavLink
+                      to={`/delete-product/${item._id}`}
+                      className="bg-red-500 text-white px-3 py-1 rounded-md font-medium hover:bg-red-600 transition"
                     >
                       Delete
-                    </button>
+                    </NavLink>
                   </div>
                 </motion.div>
               ))}

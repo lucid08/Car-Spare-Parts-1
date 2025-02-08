@@ -25,10 +25,10 @@ const CategoryPage = () => {
   }, [category]);
 
   return (
-    <main className="min-h-screen bg-gray-900 py-10 px-4 md:px-8 lg:px-16">
+    <main className="min-h-screen bg-gray-300 py-10 px-4 md:px-8 lg:px-16 pt-24"> {/* Adjusted padding-top for navbar */}
       {/* Category Heading */}
       <motion.h1
-        className="text-4xl font-extrabold text-center mb-12 text-white capitalize"
+        className="text-4xl font-extrabold text-center mb-12 text-gray-900 capitalize"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
@@ -82,7 +82,7 @@ const CategoryPage = () => {
             </Link>
           ))
         ) : (
-          <p className="text-white text-center col-span-full">
+          <p className="text-gray-700 text-center col-span-full">
             No products available
           </p>
         )}

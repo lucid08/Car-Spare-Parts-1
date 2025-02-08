@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
+import loginimg from './images/login4.jpg';
 
 const Login = () => {
   const [input, setInput] = useState({ email: "", password: "" });
@@ -29,40 +30,51 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white items-center justify-center px-6">
-      {/* Form Container */}
-      <div className="w-full max-w-4xl bg-gray-600 rounded-3xl shadow-lg flex overflow-hidden">
-        {/* Left Side: Image with animation */}
+    <div className="flex min-h-screen bg-gray-300 text-white items-center justify-center px-4 sm:px-6">
+      <div className="w-full max-w-4xl bg-gray-500 shadow-lg flex flex-col sm:flex-row overflow-hidden">
+        {/* Left Side: Image with Overlay */}
         <motion.div
-          className="w-1/2 bg-cover bg-center"
-          style={{ backgroundImage: "url('./Components/images/home1.jpg')" }}
+          className="w-full sm:w-1/2 flex justify-center items-center bg-black relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          {/* Optional text overlay (can be removed if not needed) */}
-          <div className="flex justify-center items-center h-full bg-black bg-opacity-50">
+          <img src={loginimg} alt="Login Visual" className="w-full h-full object-cover" />
+          <motion.div
+            className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50"
+            initial={{ opacity: 50 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <motion.h2
-              className="text-4xl font-extrabold text-orange-500 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              className="text-3xl sm:text-5xl font-bold text-orange-500 text-center px-4 tracking-widest"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              Welcome to Our Platform
+              Welcome Back!
+              <motion.p
+                className="mt-2 sm:mt-4 text-lg sm:text-xl font-semibold text-white"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2 }}
+              >
+                to your one and only car spare parts platform
+              </motion.p>
             </motion.h2>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Right Side: Login Form */}
-        <div className="w-1/2 p-10">
+        <div className="w-full sm:w-1/2 p-6 sm:p-10 bg-gray-900">
           <motion.div
-            className="w-full max-w-md mx-auto bg-gray-600 shadow-lg rounded-3xl p-10"
+            className="w-full max-w-md mx-auto bg-gray-900 shadow-lg rounded-3xl p-6 sm:p-10"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-extrabold text-orange-500 text-center mb-4">Login</h2>
-            <p className="text-center text-gray-400 mb-6">Welcome back! Please enter your credentials.</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-orange-500 text-center mb-4">Login</h2>
+            <p className="text-center text-white mb-4 sm:mb-6"> Please enter your credentials.</p>
             
             <form onSubmit={submitHandler}>
               <div className="mb-4">
@@ -100,7 +112,7 @@ const Login = () => {
               </motion.button>
             </form>
             
-            <p className="text-sm text-center text-gray-400 mt-4">
+            <p className="text-sm text-center text-white mt-4">
               Don't have an account? <a href="/signup" className="text-orange-500 hover:underline">Sign Up</a>
             </p>
             <div className="text-center mt-4">

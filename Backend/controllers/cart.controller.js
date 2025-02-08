@@ -282,3 +282,69 @@ export const decrementCartItem = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const incrementCartItem = async (req, res) => {
+  try {
+    const userId = req.user.id; // Assuming you have middleware to extract user info from the token
+    const { productId } = req.body;
+
+    if (!productId) {
+      return res.status(400).json({ error: "Product ID is required" });
+    }
+
+    // Find the user's cart
+    const cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      return res.status(404).json({ error: "Cart not found" });
+    }
+
+    // Find the item in the cart
+    const itemIndex = cart.items.findIndex(
+      (item) => item.product.toString() === productId
+    );
+
+    if (itemIndex === -1) {
+      return res.status(404).json({ error: "Item not found in cart" });
+    }
+
+    // Get the item and price
+    const item = cart.items[itemIndex];
+    const itemPrice = item.price; // The price of the item
+
+    // Ensure the item price is a valid number
+    if (isNaN(itemPrice) || itemPrice <= 0) {
+      return res.status(400).json({ error: "Invalid item price" });
+    }
+
+    // Increment the quantity
+    item.quantity += 1;
+
+    // Recalculate the total price for this item (quantity * price)
+    item.totalPrice = item.quantity * itemPrice;
+
+    // Recalculate the total cart price
+    const totalCartPrice = cart.items.reduce((acc, item) => {
+      return acc + item.quantity * item.price; // Sum up each item's total price
+    }, 0);
+
+    // Update the cart's total price
+    cart.totalPrice = totalCartPrice;
+
+    // Save the updated cart
+    const updatedCart = await cart.save();
+
+    // Return the updated item or cart
+    const updatedItem = updatedCart.items.find(
+      (item) => item.product.toString() === productId
+    );
+
+    res.status(200).json({
+      message: "Item updated successfully",
+      updatedItem,
+      cart: updatedCart,
+    });
+  } catch (error) {
+    console.error("Error updating cart:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

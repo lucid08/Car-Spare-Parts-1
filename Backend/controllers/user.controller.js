@@ -339,7 +339,7 @@ export const paymentVerification = (req, res) => {
   const isMatch = expected === razorpay_signature;
   if (isMatch) {
     return res.redirect (
-      `$https://spare-sphere.netlify.app/paymentSuccess?reference=${razorpay_payment_id}`
+      `https://spare-sphere.netlify.app/paymentSuccess?reference=${razorpay_payment_id}`
     );
   }
 

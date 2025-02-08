@@ -260,7 +260,7 @@ const Cart = () => {
         const token = localStorage.getItem("token");
   
         const response = await axios.post(
-          "https://spare-sphere-1.onrender.com//api/v1/cart/checkout",
+          "https://spare-sphere-1.onrender.com/api/v1/cart/checkout",
           { shippingAddress },
           {
             headers: {
